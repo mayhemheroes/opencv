@@ -1,0 +1,4 @@
+project: PROJECT
+target: core_fuzzer
+cmds:
+- cmd: /out/core_fuzzer
