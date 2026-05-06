@@ -15,7 +15,8 @@
 ################################################################################
 
 FROM gcr.io/oss-fuzz-base/base-builder
-RUN apt-get update && apt-get install -y build-essential cmake pkg-config
+RUN sed -i s/snapshot.ubuntu.com/archive.ubuntu.com/g /etc/apt/sources.list 2>/dev/null || true
+RUN apt-get update --fix-missing && apt-get install -y --fix-missing build-essential cmake pkg-config
 COPY . opencv
 RUN rm -rf opencv/mayhem
 WORKDIR opencv/
